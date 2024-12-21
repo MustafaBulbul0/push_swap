@@ -1,31 +1,25 @@
-#include "push_swap.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap_utils.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mubulbul <mubulbul@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/12/22 01:22:26 by mubulbul          #+#    #+#             */
+/*   Updated: 2024/12/22 02:46:52 by mubulbul         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-/*
-sa (swap a): Swap the first 2 elements at the top of stack a.
-        Do nothing if there is only one or no elements.
-sb (swap b): Swap the first 2 elements at the top of stack b.
-        Do nothing if there is only one or no elements.
-ss : sa and sb at the same time.
-pa (push a): Take the first element at the top of b and put it at the top of a.
-        Do nothing if b is empty.
-pb (push b): Take the first element at the top of a and put it at the top of b.
-        Do nothing if a is empty.
-ra (rotate a): Shift up all elements of stack a by 1.
-        The first element becomes the last one.
-rb (rotate b): Shift up all elements of stack b by 1.
-        The first element becomes the last one.
-rr : ra and rb at the same time.
-rra (reverse rotate a): Shift down all elements of stack a by 1.
-        The last element becomes the first one.
-rrb (reverse rotate b): Shift down all elements of stack b by 1.
-        The last element becomes the first one.
-rrr : rra and rrb at the same time.
-*/
+#include "push_swap.h"
 
 void    ft_sa_sb(int   *swap)
 {
+    int size;
     int temp;
 
+    size = get_size(swap);
+    if (size < 2)
+        return ;
     temp = swap[0];
     swap[0] = swap[1];
     swap[1] = temp;
@@ -37,12 +31,22 @@ void    ft_pa_pb(int *from, int *dest)
     int temp;
     int i;
 
-    i = -1;
-    size = sizeof(from) / 4;
+    i = 0;
+    size = get_size(from);
     temp = from[0];
-    while (++i + 1 == size)
+    while (i + 1 < size)
+    {
         from[i] = from[i + 1];
-    from[size] = 0;
+        i++;
+    }
+    from[size - 1] = 0;
+    size = get_size(dest);
+    while (0 != size)
+    {
+        dest[size] = dest[size - 1];
+        size--;
+    }
+    dest[0] = temp;
 }
 
 void    ft_ra_rb(int *rotate)
@@ -56,12 +60,12 @@ void    ft_ra_rb(int *rotate)
     while(rotate[i] == 0 && rotate[i + 1] == 0)
         i++;
     temp = rotate[0];
-    while(j < i - 1)
+    while(j < i)
     {
         rotate[j] = rotate[j + 1];
         j++;
     }
-    rotate[j + 1] = temp;
+    rotate[j - 1] = temp;
 }
 
 void    ft_rra_rrb(int *rotate)
