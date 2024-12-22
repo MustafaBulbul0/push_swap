@@ -6,7 +6,7 @@
 /*   By: mubulbul <mubulbul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 22:57:55 by mubulbul          #+#    #+#             */
-/*   Updated: 2024/12/22 10:56:11 by mubulbul         ###   ########.fr       */
+/*   Updated: 2024/12/22 11:35:22 by mubulbul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void    three_value_continue(int *arr)
         temp = arr[0];
         arr[0] = arr[2];
         arr[2] = temp;
-        ft_write(1, "rra\nsa", 6);
+        ft_write(1, "sa\nrra", 6);
     }
     else if (arr[0] > arr[1] && arr[1] < arr[2] && arr[0] > arr[2])
     {
@@ -62,7 +62,7 @@ void    three_value(int *arr)
         temp = arr[2];
         arr[2] = arr[1];
         arr[1] = temp;
-        ft_write(1, "ra\nsa\n",6);
+        ft_write(1, "sa\nra\n",6);
     }
     else if (arr[0] < arr[1] && arr[1] > arr[2] && arr[0] > arr[2])
     {
@@ -70,7 +70,7 @@ void    three_value(int *arr)
         arr[2] = arr[1];
         arr[1] = arr[0];
         arr[0] = temp;
-        ft_write(1, "rra\n", 4);
+        ft_write(1, "ra\n", 4);
     }
     else
         three_value_continue(arr); 
