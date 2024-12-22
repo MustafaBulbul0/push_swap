@@ -6,11 +6,16 @@
 /*   By: mubulbul <mubulbul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 23:19:53 by mubulbul          #+#    #+#             */
-/*   Updated: 2024/12/22 02:40:41 by mubulbul         ###   ########.fr       */
+/*   Updated: 2024/12/22 10:45:05 by mubulbul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	ft_write(int file,char *text, int size)
+{
+	write(file ,text, size);
+}
 
 void	*ft_calloc(size_t arrSize, size_t varSize)
 {
@@ -30,29 +35,22 @@ void	*ft_calloc(size_t arrSize, size_t varSize)
 	return (memory);
 }
 
-int	same_num_control(int *arr)
+int	same_num_control(int *arr,int const stack_size)
 {
 	int	i;
 	int	j;
 
 	i = 0;
-	while (arr[i + 1])
+	while (i < stack_size - 1)
 	{
 		j = i + 1;
-		while (arr[j])
+		while (j < stack_size)
 		{
 			if (arr[j] == arr[i])
 				return (1);
 			j++;
 		}
+		i++;
 	}
 	return (0);
-}
-
-int get_size(int *arr)
-{
-    int size = 0;
-    while (arr[size] != 2147483647)
-        size++;
-    return size;
 }

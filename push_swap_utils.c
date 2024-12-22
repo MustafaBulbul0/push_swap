@@ -6,33 +6,31 @@
 /*   By: mubulbul <mubulbul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/22 01:22:26 by mubulbul          #+#    #+#             */
-/*   Updated: 2024/12/22 02:46:52 by mubulbul         ###   ########.fr       */
+/*   Updated: 2024/12/22 09:30:52 by mubulbul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void    ft_sa_sb(int   *swap)
+void    ft_sa_sb(int   *swap, int const stack_size)
 {
-    int size;
     int temp;
 
-    size = get_size(swap);
-    if (size < 2)
+    if (stack_size < 2)
         return ;
     temp = swap[0];
     swap[0] = swap[1];
     swap[1] = temp;
 }
 
-void    ft_pa_pb(int *from, int *dest)
+void    ft_pa_pb(int *from, int *dest, int const stack_size)
 {
     int size;
     int temp;
     int i;
 
     i = 0;
-    size = get_size(from);
+    size = stack_size;
     temp = from[0];
     while (i + 1 < size)
     {
@@ -40,7 +38,6 @@ void    ft_pa_pb(int *from, int *dest)
         i++;
     }
     from[size - 1] = 0;
-    size = get_size(dest);
     while (0 != size)
     {
         dest[size] = dest[size - 1];
@@ -49,7 +46,7 @@ void    ft_pa_pb(int *from, int *dest)
     dest[0] = temp;
 }
 
-void    ft_ra_rb(int *rotate)
+void    ft_ra_rb(int *rotate, int const stack_size)
 {
     int i;
     int j;
@@ -57,7 +54,7 @@ void    ft_ra_rb(int *rotate)
 
     i = 0;
     j = 0;
-    while(rotate[i] == 0 && rotate[i + 1] == 0)
+    while(!((rotate[i] == 0 && rotate[i + 1] == 0) || i >= stack_size))
         i++;
     temp = rotate[0];
     while(j < i)
@@ -68,14 +65,14 @@ void    ft_ra_rb(int *rotate)
     rotate[j - 1] = temp;
 }
 
-void    ft_rra_rrb(int *rotate)
+void    ft_rra_rrb(int *rotate, int const stack_size)
 {
     int j;
     int i;
     int temp;
 
     i = 0;
-    while(rotate[i] == 0 && rotate[i + 1] == 0)
+    while(!((rotate[i] == 0 && rotate[i + 1] == 0) || i >= stack_size))
         i++;
     temp = rotate[i - 1];
     while (i > 0)
