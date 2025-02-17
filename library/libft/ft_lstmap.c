@@ -1,18 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap2.c                                       :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mubulbul <mubulbul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/22 09:50:58 by mubulbul          #+#    #+#             */
-/*   Updated: 2024/12/22 09:57:37 by mubulbul         ###   ########.fr       */
+/*   Created: 2024/10/16 15:05:38 by mubulbul          #+#    #+#             */
+/*   Updated: 2024/10/19 23:36:59 by mubulbul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-void    more_three_value(int *arr, int stack_size)
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-    
+	t_list	*null;
+	t_list	*new_list;
+
+	if (!lst || !f || !del)
+		return (NULL);
+	null = NULL;
+	while (lst)
+	{
+		new_list = ft_lstnew(f(lst->content));
+		if (!new_list)
+		{
+			ft_lstclear(&null, del);
+			return (NULL);
+		}
+		ft_lstadd_back(&null, new_list);
+		lst = lst->next;
+	}
+	return (null);
 }
