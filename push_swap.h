@@ -21,6 +21,11 @@ typedef struct s_data
 
 void		shut_program_error(t_stack *stack, t_data *data);
 void		main_control(char **argv);
-long long	ft_atoi2(const char *chNum);
+long long	ft_atoi2(char *chNum);
+void		sa_sb(t_stack **stack);
+void		pa_pb(t_stack **src, t_stack **dest);
+void		ra_rb(t_stack **stack);
+void		rra_rrb(t_stack **stack);
+void		ss_rr_rrr(int	i, t_stack **a, t_stack **b);
 
 #endif
