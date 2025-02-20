@@ -1,16 +1,17 @@
 NAME = push_swap
 CC = cc
 RM = rm -rf
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g
 PRINTF_DIR = ./library/ft_printf
 LIBFT_DIR = ./library/libft
 UTILS_DIR = ./utils
 
 SRCS = push_swap.c \
 		$(UTILS_DIR)/utils_one.c \
-		$(UTILS_DIR)/free.c \
 		$(UTILS_DIR)/stack_control.c \
-		$(UTILS_DIR)/control_one.c 
+		$(UTILS_DIR)/control_one.c \
+		$(UTILS_DIR)/sort.c \
+		$(UTILS_DIR)/free.c \
 
 OBJS = ${SRCS:.c=.o}
 
