@@ -25,6 +25,5 @@ int main(int argc, char **argv)
 		sort_2(a);
 	printf("%d\n", (*a)->data);
 	printf("%d\n", (*a)->next->data);
-
-	free(argv);
+	succes_program(NULL, data);
 }

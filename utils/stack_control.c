@@ -14,7 +14,7 @@ void	sa_sb(t_stack **stack, char	*text)
 	second->next = first;
 	*stack = second;
 	if (text)
-		write (1, &text, sizeof(text));
+		write (1, text, ft_strlen(text));
 }
 
 void	pa_pb(t_stack **src, t_stack **dest, char	*text)
@@ -28,7 +28,7 @@ void	pa_pb(t_stack **src, t_stack **dest, char	*text)
 	temp->next = *dest;
 	*dest = temp;
 	if (text)
-		write (1, &text, sizeof(text));
+		write (1, text, ft_strlen(text));
 }
 
 void	ra_rb(t_stack **stack, char	*text)
@@ -46,7 +46,7 @@ void	ra_rb(t_stack **stack, char	*text)
 		last = last->next;
 	last->next = first;
 	if (text)
-		write (1, &text, sizeof(text));
+		write (1, text, ft_strlen(text));
 }
 
 void	rra_rrb(t_stack **stack, char	*text)
@@ -67,7 +67,7 @@ void	rra_rrb(t_stack **stack, char	*text)
 	last->next = *stack;
 	*stack = last;
 	if (text)
-		write (1, &text, sizeof(text));
+		write (1, text, ft_strlen(text));
 }
 
 void	ss_rr_rrr(int	i, t_stack **a, t_stack **b)

@@ -15,7 +15,7 @@ char	**argv_edit(char **argv)
 		n_argv_size++;
 	nn_argv = (char **)malloc((n_argv_size + 2) * sizeof(char *));
 	if (!nn_argv)
-		return (free(n_argv), NULL);
+		return (NULL);
 	nn_argv[0] = argv[0];
 	i = 0;
 	while (++i <= n_argv_size)
@@ -53,37 +53,36 @@ long long	ft_atoi2(char *chNum)
 	return (j * k);
 }
 
-static t_stack	**rec_arg_int(int i, char **argv)
+static t_stack	*rec_arg_int(int i, char **argv)
 {
-	t_stack **new_node;
+	t_stack	*stack;
+
 	if (!argv[i])
 		return (NULL);
-	new_node = (t_stack **)malloc(sizeof(t_stack *));
-	if (!new_node)
+	stack = (t_stack *)malloc(sizeof(t_stack));
+	if (!stack)
 		return (NULL);
-	*new_node = (t_stack *)malloc(sizeof(t_stack));
-	if (!(*new_node))
-	{
-		free(new_node);
-		return (NULL);
-	}
-	(*new_node)->data = ft_atoi2(argv[i]);
-	(*new_node)->next = *rec_arg_int(i + 1, argv);
-	return (new_node);
+	stack->data = ft_atoi2(argv[i]);
+	stack->next = rec_arg_int(i + 1, argv);
+	return (stack);
 }
-
 
 t_stack	**arg_int(t_data **data)
 {
 	t_stack	**stack;
-	t_stack	**size;
+	t_stack	*size;
 
-	stack = rec_arg_int(1, (*data)->arg);
-	size = stack;
+	stack = (t_stack **)malloc(sizeof(t_stack *));
+	if (!stack)
+		shut_program_error(stack, data);
+	*stack = rec_arg_int(1, (*data)->arg);
+	if (!*stack)
+		shut_program_error(stack, data);
 	(*data)->stack_size = 0;
-	while (*size)
+	size = *stack;
+	while (size)
 	{
-		(*size) = (*size)->next;
+		size = size->next;
 		(*data)->stack_size++;
 	}
 	return (stack);
