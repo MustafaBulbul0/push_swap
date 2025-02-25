@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mubulbul <mubulbul@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mustafa <mustafa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 13:13:09 by mustafa           #+#    #+#             */
-/*   Updated: 2024/10/19 10:52:18 by mubulbul         ###   ########.fr       */
+/*   Updated: 2025/02/25 18:29:03 by mustafa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,5 +66,7 @@ char	*ft_strtrim(char const *s1, char const *set);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 int		ft_tolower(int down);
 int		ft_toupper(int up);
+char	**ft_strdup_2d(const char **str);
+void	clear_2d_pointer(char **map);
 
 #endif

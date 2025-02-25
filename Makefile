@@ -1,7 +1,7 @@
 NAME = push_swap
 CC = cc
 RM = rm -rf
-CFLAGS = -Wall -Wextra -Werror -g
+CFLAGS = -Wall -Wextra -Werror
 PRINTF_DIR = ./library/ft_printf
 LIBFT_DIR = ./library/libft
 UTILS_DIR = ./utils

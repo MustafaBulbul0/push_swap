@@ -12,7 +12,8 @@ void	free_list(t_stack **stack)
 		free(*stack);
 		*stack = temp;
 	}
-	*stack = NULL;
+	free(*stack);
+	free(stack);
 }
 
 void	free_data(t_data **data)
@@ -32,7 +33,7 @@ void	free_data(t_data **data)
 		free((*data)->arg);
 	}
 	free(*data);
-	*data = NULL;
+	free(data);
 }
 
 void	shut_program_error(t_stack **stack, t_data **data)
@@ -52,4 +53,5 @@ void	succes_program(t_stack **stack, t_data **data)
 		free_list(stack);
 	if (data && *data)
 		free_data(data);
+	exit (EXIT_SUCCESS);
 }
