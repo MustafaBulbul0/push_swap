@@ -75,18 +75,56 @@ static t_stack	*rec_arg_int(int i, char **argv)
 	return (stack);
 }
 
-void	arg_int(t_data **data, t_stack **stack)
+int	stack_order(int i, t_stack **stack)
+{
+	int		order;
+	t_stack	**tmp;
+
+	order = 1;
+	tmp = stack;
+	while (*tmp)
+	{
+		if ((*tmp)->data == i)
+			return (order);
+		(*tmp) = (*tmp)->next;
+		order++;
+	}
+	return (-1);
+}
+
+int	stack_size(t_stack **stack)
 {
 	t_stack	*size;
+	int		total_size;
 
-	*stack = rec_arg_int(0, (*data)->arg);
-	if (!*stack)
-		shut_program_error(stack, data);
-	(*data)->stack_size = 0;
 	size = *stack;
+	total_size = 0;
 	while (size)
 	{
 		size = size->next;
-		(*data)->stack_size++;
+		total_size++;
 	}
+	return (total_size);
+
+}
+
+void	arg_int(t_data **data, t_stack **stack)
+{
+	*stack = rec_arg_int(0, (*data)->arg);
+	if (!*stack)
+		shut_program_error(stack, data);
+	(*data)->stack_size = stack_size(stack);
+}
+
+void	push_two(t_stack **a, t_stack **b, t_data **data)
+{
+	pa_pb(a, b, "pb\n");
+	pa_pb(a, b, "pb\n");
+	if ((*b)->data > (*b)->next->data)
+	{
+		(*data)->b_max = (*b)->data;
+		(*data)->b_min = (*b)->next->data;
+	}
+	(*data)->a_size = stack_size(a);
+	(*data)->b_size = stack_size(b);
 }

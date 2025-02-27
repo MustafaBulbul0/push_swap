@@ -23,10 +23,12 @@ int main(int argc, char **argv)
 	arg_int(data, a);
 	if ((*data)->stack_size == 2)
 		sort_2(a);
-	if ((*data)->stack_size == 3)
+	else if ((*data)->stack_size == 3)
 		sort_3(a);
-	//printf("%d\n", (*a)->data);
-	//printf("%d\n", (*a)->next->data);
-	//printf("%d\n", (*a)->next->next->data);
+	else if ((*data)->stack_size > 3)
+		turk_algorithm(a, data);
+	printf("%d\n", (*a)->data);
+	printf("%d\n", (*a)->next->data);
+	printf("%d\n", (*a)->next->next->data);
 	succes_program(a, data);
 }

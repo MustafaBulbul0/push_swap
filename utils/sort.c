@@ -37,3 +37,19 @@ void	sort_3(t_stack **a)
 		sa_sb(a, "sa\n");
 	}
 }
+
+
+void turk_algorithm(t_stack **a, t_data **data)
+{
+	t_stack	**b;
+	
+	b = (t_stack **)malloc(sizeof(t_stack *));
+	if (!b)
+		shut_program_error(a, data);
+	*b = NULL;
+	push_two(a, b, data);
+
+
+
+	free_list(b);
+}
