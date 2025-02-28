@@ -77,7 +77,11 @@ void	turk_algorithm(t_stack **a, t_data **data)
 		push_function(a, b, num_a, (*b)->data);
 		pa_pb(b, a, "pa\n");
 	}
-	while (min_value(a) != (*a)->data)
-		rra_rrb(a, "rra\n");
+	if (index_num(a, min_value(a)) > (stack_size(a) / 2))
+		while (min_value(a) != (*a)->data)
+			rra_rrb(a, "rra\n");
+	else
+		while (min_value(a) != (*a)->data)
+			ra_rb(a, "ra\n");
 	free_list(b);
 }
