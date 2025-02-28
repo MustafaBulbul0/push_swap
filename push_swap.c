@@ -27,8 +27,5 @@ int main(int argc, char **argv)
 		sort_3(a);
 	else if ((*data)->stack_size > 3)
 		turk_algorithm(a, data);
-	printf("%d\n", (*a)->data);
-	printf("%d\n", (*a)->next->data);
-	printf("%d\n", (*a)->next->next->data);
 	succes_program(a, data);
 }

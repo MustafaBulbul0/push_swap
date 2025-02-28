@@ -17,8 +17,6 @@ typedef struct s_data
 {
 	char	**arg;
 	int 	stack_size;
-	int		b_max;
-	int		b_min;
 	int		a_size;
 	int		b_size;
 }	t_data;
@@ -39,6 +37,10 @@ void		sort_2(t_stack **a);
 void		sort_3(t_stack **a);
 void		turk_algorithm(t_stack **a, t_data **data);
 void		push_two(t_stack **a, t_stack **b, t_data **data);
+int			find_best_number(t_stack **a, t_stack **b);
+int			find_location(int number, t_stack **b);
+void 		push_function(t_stack **a, t_stack **b, int num_a, int num_b);
+int			find_location2(int number, t_stack **b);
 int			stack_size(t_stack **stack);
 
 

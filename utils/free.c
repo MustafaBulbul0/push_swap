@@ -4,15 +4,14 @@ void	free_list(t_stack **stack)
 {
 	t_stack	*temp;
 
-	if (!stack || !*stack)
-		return ;
+	if (!stack)
+		return;
 	while (*stack)
 	{
 		temp = (*stack)->next;
 		free(*stack);
 		*stack = temp;
 	}
-	free(*stack);
 	free(stack);
 }
 

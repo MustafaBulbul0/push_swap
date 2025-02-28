@@ -38,18 +38,70 @@ void	sort_3(t_stack **a)
 	}
 }
 
+int	max_value(t_stack **stack)
+{
+	t_stack	*tmp;
+	int		max;
+
+	if (!stack || !*stack)
+		return (0);
+	tmp = *stack;
+	max = tmp->data;
+	while (tmp)
+	{
+		if (tmp->data > max)
+			max = tmp->data;
+		tmp = tmp->next;
+	}
+	return (max);
+}
+
+int	min_value(t_stack **stack)
+{
+	t_stack	*tmp;
+	int		min;
+
+	if (!stack || !*stack)
+		return (0);
+	tmp = *stack;
+	min = tmp->data;
+	while (tmp)
+	{
+		if (tmp->data < min)
+			min = tmp->data;
+		tmp = tmp->next;
+	}
+	return (min);
+}
 
 void turk_algorithm(t_stack **a, t_data **data)
 {
 	t_stack	**b;
-	
+	int		num_a;
+	int		num_b;
+
 	b = (t_stack **)malloc(sizeof(t_stack *));
 	if (!b)
 		shut_program_error(a, data);
 	*b = NULL;
 	push_two(a, b, data);
-
-
-
+	while (stack_size(a) > 3)
+	{
+		num_a = find_best_number(a, b);
+		num_b = find_location(num_a, b);
+		push_function(a, b, num_a, num_b);
+		pa_pb(a, b, "pb\n");
+	}
+	sort_3(a);
+	num_a = find_best_number(a, b);
+	push_function(a, b, num_a, max_value(b));
+	while ((*b))
+	{
+		num_a = find_location2((*b)->data, a);
+		push_function(a, b, num_a, (*b)->data);
+		pa_pb(b, a, "pa\n");
+	}
+	while (min_value(a) != (*a)->data)
+		rra_rrb(a, "rra\n");
 	free_list(b);
 }
