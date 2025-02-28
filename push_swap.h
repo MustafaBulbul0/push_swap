@@ -33,6 +33,7 @@ void		pa_pb(t_stack **src, t_stack **dest, char	*text);
 void		ra_rb(t_stack **stack, char	*text);
 void		rra_rrb(t_stack **stack, char	*text);
 void		ss_rr_rrr(int	i, t_stack **a, t_stack **b);
+void		sort(t_data **data, t_stack **a);
 void		sort_2(t_stack **a);
 void		sort_3(t_stack **a);
 void		turk_algorithm(t_stack **a, t_data **data);

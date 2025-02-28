@@ -2,12 +2,11 @@
 
 void	sa_sb(t_stack **stack, char	*text)
 {
-	t_stack *first;
+	t_stack	*first;
 	t_stack	*second;
 
 	if (!stack || !(*stack) || !((*stack)->next))
 		return ;
-
 	first = *stack;
 	second = first->next;
 	first->next = second->next;
@@ -19,7 +18,7 @@ void	sa_sb(t_stack **stack, char	*text)
 
 void	pa_pb(t_stack **src, t_stack **dest, char	*text)
 {
-	t_stack *temp;
+	t_stack	*temp;
 
 	if (!src || !(*src))
 		return ;
@@ -33,8 +32,8 @@ void	pa_pb(t_stack **src, t_stack **dest, char	*text)
 
 void	ra_rb(t_stack **stack, char	*text)
 {
-	t_stack *first;
-	t_stack *last;
+	t_stack	*first;
+	t_stack	*last;
 
 	if (!stack || !(*stack) || !((*stack)->next))
 		return ;
@@ -70,7 +69,7 @@ void	rra_rrb(t_stack **stack, char	*text)
 		write (1, text, ft_strlen(text));
 }
 
-void	ss_rr_rrr(int	i, t_stack **a, t_stack **b)
+void	ss_rr_rrr(int i, t_stack **a, t_stack **b)
 {
 	if (i == 1)
 	{
@@ -87,7 +86,7 @@ void	ss_rr_rrr(int	i, t_stack **a, t_stack **b)
 	else if (i == 3)
 	{
 		rra_rrb(a, NULL);
-		rra_rrb(b,NULL);
+		rra_rrb(b, NULL);
 		write(1, "rrr\n", 4);
 	}
 }

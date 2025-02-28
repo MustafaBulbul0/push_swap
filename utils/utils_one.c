@@ -49,5 +49,4 @@ int	stack_size(t_stack **stack)
 		total_size++;
 	}
 	return (total_size);
-
 }

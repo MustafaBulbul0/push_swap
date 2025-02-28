@@ -1,17 +1,17 @@
 #include "../push_swap.h"
 
-static void control_one(t_data **data);
-static void control_two(t_data **data);
-static void control_three(t_data **data);
+static void	control_one(t_data **data);
+static void	control_two(t_data **data);
+static void	control_three(t_data **data);
 
-void main_control(t_data **data)
+void	main_control(t_data **data)
 {
 	control_one(data);
 	control_two(data);
 	control_three(data);
 }
 
-static void control_one(t_data **data)
+static void	control_one(t_data **data)
 {
 	char	**argv;
 	int		size;
@@ -39,7 +39,7 @@ static void control_one(t_data **data)
 	}
 }
 
-static void control_two(t_data **data)
+static void	control_two(t_data **data)
 {
 	char		**argv;
 	long long	number;
@@ -60,7 +60,7 @@ static void control_two(t_data **data)
 	}
 }
 
-static void control_three(t_data **data)
+static void	control_three(t_data **data)
 {
 	char	**argv;
 	int		*values;
@@ -72,18 +72,15 @@ static void control_three(t_data **data)
 	size = 0;
 	while (argv[size])
 		size++;
-
 	values = malloc(sizeof(int) * size);
 	if (!values)
 		shut_program_error(NULL, data);
-
 	i = 0;
 	while (i < size)
 	{
 		values[i] = ft_atoi2(argv[i]);
 		i++;
 	}
-
 	i = 0;
 	while (i < size - 1)
 	{

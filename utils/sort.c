@@ -1,5 +1,15 @@
 #include "../push_swap.h"
 
+void	sort(t_data **data, t_stack **a)
+{
+	if ((*data)->stack_size == 2)
+		sort_2(a);
+	else if ((*data)->stack_size == 3)
+		sort_3(a);
+	else if ((*data)->stack_size > 3)
+		turk_algorithm(a, data);
+}
+
 void	sort_2(t_stack **a)
 {
 	int	b;
@@ -74,7 +84,7 @@ int	min_value(t_stack **stack)
 	return (min);
 }
 
-void turk_algorithm(t_stack **a, t_data **data)
+void	turk_algorithm(t_stack **a, t_data **data)
 {
 	t_stack	**b;
 	int		num_a;

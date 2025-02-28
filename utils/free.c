@@ -5,7 +5,7 @@ void	free_list(t_stack **stack)
 	t_stack	*temp;
 
 	if (!stack)
-		return;
+		return ;
 	while (*stack)
 	{
 		temp = (*stack)->next;
@@ -44,7 +44,6 @@ void	shut_program_error(t_stack **stack, t_data **data)
 	write(2, "Error\n", 6);
 	exit(EXIT_FAILURE);
 }
-
 
 void	succes_program(t_stack **stack, t_data **data)
 {
