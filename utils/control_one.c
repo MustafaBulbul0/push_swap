@@ -60,27 +60,11 @@ static void	control_two(t_data **data)
 	}
 }
 
-static void	control_three(t_data **data)
+static void	check_duplicates(int *values, int size, t_data **data)
 {
-	char	**argv;
-	int		*values;
-	int		i;
-	int		j;
-	int		size;
+	int	i;
+	int	j;
 
-	argv = (*data)->arg;
-	size = 0;
-	while (argv[size])
-		size++;
-	values = malloc(sizeof(int) * size);
-	if (!values)
-		shut_program_error(NULL, data);
-	i = 0;
-	while (i < size)
-	{
-		values[i] = ft_atoi2(argv[i]);
-		i++;
-	}
 	i = 0;
 	while (i < size - 1)
 	{
@@ -96,21 +80,28 @@ static void	control_three(t_data **data)
 		}
 		i++;
 	}
-	free(values);
 }
 
-void	stack_order_control(t_stack **a, t_data **data)
+static void	control_three(t_data **data)
 {
-	t_stack	*tmp;
+	char	**argv;
+	int		*values;
+	int		i;
+	int		size;
 
-	if (!a || !(*a))
-		return ;
-	tmp = *a;
-	while (tmp->next)
+	argv = (*data)->arg;
+	size = 0;
+	while (argv[size])
+		size++;
+	values = malloc(sizeof(int) * size);
+	if (!values)
+		shut_program_error(NULL, data);
+	i = 0;
+	while (i < size)
 	{
-		if (tmp->data > tmp->next->data)
-			return ;
-		tmp = tmp->next;
+		values[i] = ft_atoi2(argv[i]);
+		i++;
 	}
-	succes_program(a, data);
+	check_duplicates(values, size, data);
+	free(values);
 }

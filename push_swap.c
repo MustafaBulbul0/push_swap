@@ -1,6 +1,6 @@
 #include "push_swap.h"
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
 	t_stack	**a;
 	t_data	**data;
@@ -15,7 +15,7 @@ int main(int argc, char **argv)
 		shut_program_error(NULL, NULL);
 	(*data)->arg = argv_edit(argv, argc);
 	if (!(*data)->arg || !*((*data)->arg))
-		shut_program_error(NULL, NULL);	
+		shut_program_error(NULL, NULL);
 	main_control(data);
 	a = (t_stack **)malloc(sizeof(t_stack *));
 	if (!a)

@@ -1,13 +1,11 @@
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-#include <stdio.h>
-#include <unistd.h>
-#include <stdlib.h>
-#include "./library/libft/libft.h"
-#include "./library/ft_printf/ft_printf.h"
+# include <unistd.h>
+# include <stdlib.h>
+# include "./libft/libft.h"
 
-typedef	struct s_stack
+typedef struct s_stack
 {
 	int				data;
 	struct s_stack	*next;
@@ -16,9 +14,7 @@ typedef	struct s_stack
 typedef struct s_data
 {
 	char	**arg;
-	int 	stack_size;
-	int		a_size;
-	int		b_size;
+	int		stack_size;
 }	t_data;
 
 void		shut_program_error(t_stack **stack, t_data **data);
@@ -32,18 +28,17 @@ void		sa_sb(t_stack **stack, char	*text);
 void		pa_pb(t_stack **src, t_stack **dest, char	*text);
 void		ra_rb(t_stack **stack, char	*text);
 void		rra_rrb(t_stack **stack, char	*text);
-void		ss_rr_rrr(int	i, t_stack **a, t_stack **b);
+void		ss_rr_rrr(int i, t_stack **a, t_stack **b);
 void		sort(t_data **data, t_stack **a);
-void		sort_2(t_stack **a);
 void		sort_3(t_stack **a);
 void		turk_algorithm(t_stack **a, t_data **data);
-void		push_two(t_stack **a, t_stack **b, t_data **data);
-int			find_best_number(t_stack **a, t_stack **b);
-int			find_location(int number, t_stack **b);
-void 		push_function(t_stack **a, t_stack **b, int num_a, int num_b);
-int			find_location2(int number, t_stack **b);
+int			find_best_number(t_stack **a, t_stack **b, int min_number);
+int			find_location(int number, t_stack **b, int small_num, int big_num);
+int			find_location2(int number, t_stack **a, int small_num, int big_num);
+void		push_function(t_stack **a, t_stack **b, int num_a, int num_b);
 int			stack_size(t_stack **stack);
-void 		stack_order_control(t_stack **a, t_data **data);
-
+void		stack_order_control(t_stack **a, t_data **data);
+int			index_num(t_stack **b, int number);
+int			move_number(t_stack **a, t_stack **b, int num_b, int indexa);
 
 #endif
