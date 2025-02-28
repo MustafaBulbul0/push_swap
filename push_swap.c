@@ -21,6 +21,7 @@ int main(int argc, char **argv)
 	if (!a)
 		shut_program_error(a, data);
 	arg_int(data, a);
+	stack_order_control(a, data);
 	if ((*data)->stack_size == 2)
 		sort_2(a);
 	else if ((*data)->stack_size == 3)

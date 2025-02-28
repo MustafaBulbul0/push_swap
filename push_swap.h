@@ -42,6 +42,7 @@ int			find_location(int number, t_stack **b);
 void 		push_function(t_stack **a, t_stack **b, int num_a, int num_b);
 int			find_location2(int number, t_stack **b);
 int			stack_size(t_stack **stack);
+void 		stack_order_control(t_stack **a, t_data **data);
 
 
 #endif
